@@ -43,7 +43,21 @@ def cheap_items():
 
 
 print(cheap_items())   # ['Latte', 'Tea', 'Croissant']
-show_menu()                                     #  outside the function
+                                    #  outside the function
 print(find_item("LATTE").describe())   # Latte - £2.80
 print(find_item("pizza"))              # None
 print(cheap_items())
+
+#start taking order form here
+
+show_menu()
+order = input("Your order: ").split(",")
+
+total = 0
+for item in order:
+    item = item.strip()
+    found_item = find_item(item)
+    if found_item is not None:
+        total = total + found_item.price
+    else:
+        print(f"Sorry, we don't have {item}")
